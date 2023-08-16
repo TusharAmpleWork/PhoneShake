@@ -7,15 +7,37 @@ import {
   TouchableOpacity,
   Image,
   Pressable,
+  Modal,
+  SafeAreaView
 } from 'react-native';
 //import ContactMe from './contactme';
 import {SocialMediabtn} from '../../components/button';
 import styles from './style';
 import {Heading} from '../../components/text';
+import ModalPicker from '../../components/modalPicker';
 const {height, width} = Dimensions.get('window');
 //'#F7F7F7'
 const ContactMe = ({navigation}) => {
-  const [show, setShow] = useState(true);
+  const setData=(option)=>{
+    setChooseData(option)
+  }
+const DATA=[
+  {
+    text:'location',
+    image:require('../../assets/images/Navigate.png')
+  },
+  {
+    text:'whatsapp',
+    image:require('../../assets/images/whatsapp.png')
+  }
+]
+let newImage=[]
+
+ const[imageVar,setImageVar]=useState(0)
+  // const [choosedata,setChooseData ] = useState('Add');
+  // const [isModalVisible,setisModalVisible ] = useState(false);
+  // const changeModalVisibility=(bool)=>
+  // setisModalVisible(bool)
   const goToOptions = () => {
     navigation.navigate('settings');
   };
@@ -48,13 +70,37 @@ const ContactMe = ({navigation}) => {
           />
         </View>
       </View>
-      <View style={styles.logoView}>
+
+
+<SafeAreaView>
+  <Image source={DATA[imageVar].image} />
+  <Text>{DATA[imageVar].text}</Text>
+<TouchableOpacity
+onPress={()=>newImage.push(setImageVar(1),{})}
+>
+<Text>{'add pic'}</Text>
+</TouchableOpacity>
+
+</SafeAreaView>
+      {/* <View style={styles.logoView}>
         <SocialMediabtn
-          text={'Add'}
-          onPress={() => navigation.navigate('contactme')}
+        
+          text={choosedata}
+          onPress={() => changeModalVisibility(true)}
           image={require('../../assets/images/plusSign.png')}
         />
-      </View>
+        <Modal
+        visible={isModalVisible}
+        transparent={true}
+        animationType='fade'
+        onRequestClose={()=>changeModalVisibility(false)}
+        >
+          <ModalPicker
+          changeModalVisibility={changeModalVisibility}
+          setData={setData}
+          />
+        </Modal>
+      </View> */}
     </View>
   );
 };

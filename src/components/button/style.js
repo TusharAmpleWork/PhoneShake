@@ -108,7 +108,7 @@ const styles = ScaledSheet.create({
   },
   btnText: {
     marginBottom: vs(6),
-    fontSize: s(9),
+    fontSize: s(14),
     fontWeight: '500',
     color: themeDefault.colors.grey,
     textAlign: 'center',

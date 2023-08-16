@@ -70,6 +70,7 @@ const SocialMediabtn = ({image, text, onPress}) => {
       <View
         style={styles.socialMediaBtn}>
         <TouchableOpacity onPress={onPress}>
+        
           <Image
             source={image}
             style={{width: scale(30), height: scale(30)}}

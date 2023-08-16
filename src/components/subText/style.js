@@ -9,15 +9,17 @@ import {
 import {themeDefault} from '../../themes';
 const styles = ScaledSheet.create({
   subHead: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent:'flex-end',
+    alignItems:'center',
+    //marginHorizontal:50
+    
   },
 
   subText: {
+    //backgroundColor:'pink',
     fontSize: s(12),
     color: themeDefault.colors.lightGrey,
     marginTop: vs(9),
-    //textAlign: 'center',
     fontWeight: '500',
     lineHeight: vs(14),
     fontFamily: themeDefault.fonts.SFNSTextRegular,

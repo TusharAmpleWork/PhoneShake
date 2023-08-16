@@ -102,7 +102,7 @@ const styles = ScaledSheet.create({
     marginBottom: s(10),
   },
   numberInput: {
-    marginTop: s(6),
+    marginTop: s(12),
     height: vs(21),
     width: s(80),
     color: themeDefault.colors.primaryColor,
