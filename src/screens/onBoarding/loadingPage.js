@@ -4,7 +4,7 @@ import AnimatedEllipsis from 'react-native-animated-ellipsis';
 import styles from './style';
 const Loading = ({navigation}) => {
   setTimeout(() => {
-    navigation.navigate('homeStack');
+    navigation.navigate('HomeTab');
   }, 3000);
   return (
     <View style={styles.wholepage}>

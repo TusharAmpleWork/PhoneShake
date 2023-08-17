@@ -5,7 +5,7 @@ import {ContinueBtn} from '../../components/button';
 import { MainText } from '../../components/text';
 
 const HomePage = ({navigation}) => {
-  const goToMobileVerif = () => navigation.navigate('MobileVerification');
+  const goToMobileVerif = () => navigation.navigate('MobileVerf');
 
   return (
     <View style={styles.wholepage}>

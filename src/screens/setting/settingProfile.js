@@ -22,7 +22,10 @@ switch(id){
     return (
     <View style={styles.container} >
 <HeaderComponent onBack={goToOptions} />
-    <Heading title={"What's your name?"} />
+    <Heading title={"What's your name?"} 
+      headStyle={{marginTop:0}}
+    />
+    
     <Textinput placeholder={"Full Name"}
      onChangeText={handleChange}
      />
@@ -39,7 +42,9 @@ switch(id){
       return (
       <View style={styles.container}>
  <HeaderComponent onBack={goToOptions} />
-      <Heading title={"What's your current organization"}/>
+      <Heading title={"What's your current organization"}
+        headStyle={{marginTop:0}}
+      />
       <Textinput placeholder={"Organization Name"}
      onChangeText={handleChange}
      />
@@ -56,7 +61,9 @@ switch(id){
         return(
           <View style={styles.container}>
           <HeaderComponent onBack={goToOptions} />
-               <Heading title={"What's your"}/>
+               <Heading title={"What's your"}
+                 headStyle={{marginTop:0}}
+               />
                <Heading title={"position/designation?"}
                headStyle={{marginTop:0}}
                />
@@ -76,7 +83,9 @@ switch(id){
           return(
             <View style={styles.container}>
             <HeaderComponent onBack={goToOptions} />
-                 <Heading title={"Your Bio"}/>
+                 <Heading title={"Your Bio"}
+                   headStyle={{marginTop:0}}
+                 />
                  <Textinput placeholder={"Write something about yourself..."}
                  value={name}
                 onChangeText={handleChange}
@@ -100,7 +109,9 @@ switch(id){
             return(
               <View style={styles.container} > 
                 <HeaderComponent onBack={goToOptions} />
-  <Heading title={"What's your"}/>
+  <Heading title={"What's your"}
+    headStyle={{marginTop:0}}
+  />
                <Heading title={"mobile number?"}
                headStyle={{marginTop:0}}
                />
@@ -126,7 +137,9 @@ switch(id){
             return(
               <View style={styles.container}>
               <HeaderComponent onBack={goToOptions} />
-                   <Heading title={"What's your email"}/>
+                   <Heading title={"What's your email"}
+                     headStyle={{marginTop:0}}
+                   />
                    <Textinput placeholder={"Email Address"}
                   onChangeText={handleChange}
                   />
@@ -143,7 +156,9 @@ switch(id){
               return(
                 <View style={styles.container} > 
                   <HeaderComponent onBack={goToOptions} />
-    <Heading title={"What's your"}/>
+    <Heading title={"What's your"}
+      headStyle={{marginTop:0}}
+    />
                  <Heading title={"Landline/Desk number?"}
                  headStyle={{marginTop:0}}
                  />
@@ -170,7 +185,9 @@ switch(id){
                 return(
                   <View style={styles.container} > 
                     <HeaderComponent onBack={goToOptions} />
-      <Heading title={"What's your"}/>
+      <Heading title={"What's your"}
+        headStyle={{marginTop:0}}
+      />
                    <Heading title={"Fax number?"}
                    headStyle={{marginTop:0}}
                    />
@@ -193,19 +210,53 @@ switch(id){
                   </View>
                 )
                 break;
-
+                case 8:
+                  return(
+                    <View style={styles.container}>
+                    <HeaderComponent onBack={goToOptions} />
+                         <Heading title={"What's your"}
+                           headStyle={{marginTop:0}}
+                         />
+                         <Heading title={"Twitter handle?"}
+                         headStyle={{marginTop:0}}
+                         />
+                         <Textinput placeholder={"@handle"}
+                        onChangeText={handleChange}
+                        />
+                        <SubHead title={"Ex:@phoneshake"} />
+                        <ContinueBtn title={"Continue"}
+                        onPress={goToOptions}
+                        disabled={name.trim().length>0?false:true}
+                        textStyle={name.trim().length>0?styles.finalState:styles.initialState}
+                        />
+                         </View>
+                  )
+                  break;
+                  case 9:
+                    return(
+                      <View style={styles.container}>
+                      <HeaderComponent onBack={goToOptions} />
+                           <Heading title={"What's your website?"}
+                           headStyle={{marginTop:0}}
+                           />
+                           <Textinput placeholder={"http://"}
+                          onChangeText={handleChange}
+                          />
+                          <SubHead title={"Work or Personal Website"} />
+                          <ContinueBtn title={"Continue"}
+                          onPress={goToOptions}
+                          disabled={name.trim().length>0?false:true}
+                          textStyle={name.trim().length>0?styles.finalState:styles.initialState}
+                          />
+                           </View>
+                    )
       default:
         return <Heading title={'not present'} />
 }
 
 
-  return (
-    <View style={styles.container}>
-     
-     <Heading title={"What's your name?"} />
-     
-    </View>
-  );
+
+  
 };
 
 const styles=StyleSheet.create({

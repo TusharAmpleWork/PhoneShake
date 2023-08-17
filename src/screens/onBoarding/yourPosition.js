@@ -10,7 +10,7 @@ import Tinput from '../../components/textInput';
 import styles from './style';
 const YourPosition = ({navigation}) => {
   const goToContactName = () => {
-    navigation.navigate('Contact');
+    navigation.navigate('ContactName');
   };
   const [state, setState] = useState({
     number: '',
@@ -27,7 +27,7 @@ const YourPosition = ({navigation}) => {
     navigation.goBack();
   };
   const NextScreen = () => {
-    navigation.push('Privacy');
+    navigation.push('Privacyp');
   };
 
   return (

@@ -14,7 +14,7 @@ const EmailVerf = ({navigation}) => {
   });
 
   const goToMobileVerf = () => {
-    navigation.navigate('MobileVerification');
+    navigation.navigate('MobileVerf');
   };
   const goToConfmCode = () => {
     navigation.navigate('ConfirmCode');

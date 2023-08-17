@@ -8,39 +8,34 @@ import {
   Image,
   Pressable,
   Modal,
-  SafeAreaView
+  SafeAreaView,
+  Alert,
+  TextInput,
+  FlatList,
 } from 'react-native';
 //import ContactMe from './contactme';
 import {SocialMediabtn} from '../../components/button';
 import styles from './style';
 import {Heading} from '../../components/text';
 import ModalPicker from '../../components/modalPicker';
+import { themeDefault } from '../../themes';
+import { s, vs } from 'react-native-size-matters/extend';
+
 const {height, width} = Dimensions.get('window');
 //'#F7F7F7'
 const ContactMe = ({navigation}) => {
-  const setData=(option)=>{
-    setChooseData(option)
-  }
-const DATA=[
-  {
-    text:'location',
-    image:require('../../assets/images/Navigate.png')
-  },
-  {
-    text:'whatsapp',
-    image:require('../../assets/images/whatsapp.png')
-  }
+const options=[
+  {id:1,title:"twitter"},
+  {id:2,title:'facebook'},
+  {id:3,title:'whatsapp'},
+  {id:4,title:'linkedin'}
 ]
-let newImage=[]
 
- const[imageVar,setImageVar]=useState(0)
-  // const [choosedata,setChooseData ] = useState('Add');
-  // const [isModalVisible,setisModalVisible ] = useState(false);
-  // const changeModalVisibility=(bool)=>
-  // setisModalVisible(bool)
+  const[modalVisible,setmodalVisible]=useState(false)
   const goToOptions = () => {
-    navigation.navigate('settings');
+    navigation.navigate('Settings');
   };
+
   return (
     <View style={styles.mainView}>
       <View style={styles.profile}>
@@ -72,35 +67,49 @@ let newImage=[]
       </View>
 
 
-<SafeAreaView>
-  <Image source={DATA[imageVar].image} />
-  <Text>{DATA[imageVar].text}</Text>
-<TouchableOpacity
-onPress={()=>newImage.push(setImageVar(1),{})}
->
-<Text>{'add pic'}</Text>
-</TouchableOpacity>
 
-</SafeAreaView>
-      {/* <View style={styles.logoView}>
+<View style={styles.logoView}>
         <SocialMediabtn
-        
-          text={choosedata}
-          onPress={() => changeModalVisibility(true)}
+          text={'Add'}
+          onPress={()=>setmodalVisible(true)}
           image={require('../../assets/images/plusSign.png')}
+         
         />
-        <Modal
-        visible={isModalVisible}
-        transparent={true}
-        animationType='fade'
-        onRequestClose={()=>changeModalVisibility(false)}
-        >
-          <ModalPicker
-          changeModalVisibility={changeModalVisibility}
-          setData={setData}
-          />
-        </Modal>
-      </View> */}
+       
+        <View >
+         <Modal 
+         animationType="slide"
+         transparent={true}
+         visible={modalVisible}
+         >
+           <View style={{alignItems:'center',height:height/2, marginTop:350,backgroundColor:'skyblue'}}>
+         <Text style={{fontSize:s(24),marginBottom:vs(20)}} >{"Social Media Links"}</Text>
+        
+        <FlatList data={options} 
+        renderItem={({item})=>(
+          <Text 
+          onPress={()=>setmodalVisible(false)}
+          style={{fontSize:s(24),marginBottom:vs(20),color:'black'}} >{item.title}</Text>
+  )}
+        />
+     
+         <TouchableOpacity onPress={()=>setmodalVisible(false)} >
+          <View  >
+          <Text style={{fontSize:20,}} >{"select"}</Text>
+          </View>
+        </TouchableOpacity>
+<View >
+
+           </View>
+         </View>
+          </Modal> 
+          </View>
+          
+      
+      </View>
+
+
+      
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Dimensions} from 'react-native';
+import {Text, View, Dimensions,Image} from 'react-native';
 import {moderateScale, scale,s,vs} from 'react-native-size-matters/extend';
 import styles from './style';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -30,14 +30,15 @@ const Section=({text,sectionStyle})=>{
 </View>
   )
 }
-const SubSection = ({text, name, icon, iconStyle,onPress}) => {
+const SubSection = ({text, name, icon, iconStyle,onPress,source}) => {
   return (
-    <View style={[styles.subSection]}>
-      <Text style={[styles.subSectionTitle]}>{text}</Text>
-      <View style={[styles.subSectionView]}>
+    <View style={[styles.subSection]} >
+      <Image source={source} style={[styles.subSectionTitle]}  />
+      <Text  style={[styles.subSectionTitle]}>{text}</Text>
+      <View onPress={onPress}  style={[styles.subSectionView]}>
         <Text style={[styles.subText]}>{name}</Text>
-        <Icon name={'right'} style={[styles.icon, iconStyle]}
-        onPress={onPress}
+        <Icon onPress={onPress} name={'right'} style={[styles.icon, iconStyle]}
+       
         />
       </View>
     </View>

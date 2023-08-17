@@ -16,26 +16,30 @@ import HomeTab from './bottom';
 import Settings from '../screens/setting/option';
 import Profile from '../screens/setting/settingProfile';
 import ContactMe from '../screens/setting/aboutMe';
+import LinkedAccounts from '../screens/setting/linkedAccount';
+import AccountInfo from '../screens/setting/accountInfo';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='homeStack' >
+      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='HomeTab' >
         <Stack.Screen name="landing" component={HomePage} />
-        <Stack.Screen name="MobileVerification" component={MobileVerf}  />
+        <Stack.Screen name="MobileVerf" component={MobileVerf}  />
         <Stack.Screen name="EmailVerf" component={EmailVerf}  />
         <Stack.Screen name="ConfirmCode" component={ConfirmCode}  />
         <Stack.Screen name="NameCheck" component={NameCheck}  />
         <Stack.Screen name="OrgCheck" component={OrgCheck}  />
         <Stack.Screen name="YourPostn" component={YourPosition} />
-        <Stack.Screen name="Contact" component={ContactName} />
-        <Stack.Screen name="Privacy" component={Privacyp}/>
+        <Stack.Screen name="ContactName" component={ContactName} />
+        <Stack.Screen name="Privacyp" component={Privacyp}/>
         <Stack.Screen name="Loading" component={Loading} />
-        <Stack.Screen name="homeStack" component={HomeTab} />
+        <Stack.Screen name="HomeTab" component={HomeTab} />
         <Stack.Screen name="contactMe" component={ContactMe} />
-        <Stack.Screen name="settings" component={Settings} />
-        <Stack.Screen name="profile" component={Profile} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="LinkedAccounts" component={LinkedAccounts} />
+        <Stack.Screen name="AccountInfo" component={AccountInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );

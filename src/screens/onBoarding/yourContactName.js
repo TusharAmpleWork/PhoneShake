@@ -10,7 +10,7 @@ import {vs} from 'react-native-size-matters/extend';
 
 const ContactName = ({navigation}) => {
   const goPrivacy = () => {
-    navigation.navigate('Privacy');
+    navigation.navigate('Privacyp');
   };
   const [state, setState] = useState({
     number: '',

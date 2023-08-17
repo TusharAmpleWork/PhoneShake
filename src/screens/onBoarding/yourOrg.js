@@ -27,7 +27,7 @@ const OrgCheck = ({navigation}) => {
     navigation.goBack();
   };
   const NextScreen = () => {
-    navigation.push('Privacy');
+    navigation.push('Privacyp');
   };
 
   return (

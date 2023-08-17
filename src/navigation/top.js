@@ -31,17 +31,22 @@ const HomeTopTab = () => {
             tabBarIcon: ({focused}) => (
                 <View
                   style={{
+                    flex:1,
+                    
                     flexDirection: 'row',
-                    justifyContent: 'space-evenly',
+                    justifyContent: "flex-start",
+        
                     height: vs(28),
                     width:width/4,
                     alignItems: 'center',
+                    
                   }}>
                   <MaterialCommunityIcons
                     name="vibrate"
                     style={{
                       color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
                       fontSize: vs(20),
+                    
                     }}
                   />
 
@@ -50,7 +55,7 @@ const HomeTopTab = () => {
                       color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
                       fontSize: s(14),
                       textAlign: 'center',
-                    
+                    marginHorizontal:vs(5)
                     }}>
                     {'Shake'}
                   </Text>

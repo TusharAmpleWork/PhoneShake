@@ -19,8 +19,7 @@ headStyle={{marginTop:s(20)}} />
 
 <Heading title={"like you'd shake hands!"}
 headStyle={{marginTop:s(0)}} />
-{/* <Text style={{marginTop:scale(25),fontSize:20,fontWeight:'500'}}>{"Shake your phone with someone,"}</Text>
-<Text style={{fontSize:20,fontWeight:'500'}}>{"like you'd shake hands!"}</Text> */}
+
 </View>
 
         </View>
