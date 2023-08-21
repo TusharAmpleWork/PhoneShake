@@ -18,6 +18,8 @@ import Profile from '../screens/setting/settingProfile';
 import ContactMe from '../screens/setting/aboutMe';
 import LinkedAccounts from '../screens/setting/linkedAccount';
 import AccountInfo from '../screens/setting/accountInfo';
+import Edit from '../screens/setting/editAddress';
+import AccountPrivacy from '../screens/setting/accountPrivacy';
 
 const Stack = createStackNavigator();
 const HomeStack = () => {
@@ -40,6 +42,8 @@ const HomeStack = () => {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="LinkedAccounts" component={LinkedAccounts} />
         <Stack.Screen name="AccountInfo" component={AccountInfo} />
+        <Stack.Screen name="Edit" component={Edit} />
+        <Stack.Screen name="AccountPrivacy" component={AccountPrivacy} />
       </Stack.Navigator>
     </NavigationContainer>
   );

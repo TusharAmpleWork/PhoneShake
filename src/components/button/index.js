@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {scale} from 'react-native-size-matters/extend';
+import { Button } from 'react-native-paper';
 const ContinueBtn = ({onPress, title, textStyle, disabled}) => {
   return (
     <View style={{justifyContent: 'center', alignItems: 'center'}}>
@@ -85,5 +86,18 @@ const SocialMediabtn = ({image, text, onPress}) => {
     </View>
   );
 };
+const BlockBtn=({onPress})=>{
+  return(
+    <View style={styles.button}>
+    <TouchableOpacity onPress={onPress}
+    activeOpacity={0.6}
+    >
+      <Text style={styles.buttonText} >{"Unblock"}</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
 
-export {ContinueBtn, LoginBtn, EmailBtn, CheckBtn, AvlbBtn, SocialMediabtn};
+
+
+export {ContinueBtn, LoginBtn, EmailBtn, CheckBtn, AvlbBtn, SocialMediabtn,BlockBtn};

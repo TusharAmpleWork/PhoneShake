@@ -35,7 +35,28 @@ const options=[
   const goToOptions = () => {
     navigation.navigate('Settings');
   };
+const[myNotes,setmyNotes]=useState([])
+const[myNotesArray,setmyNotesArray]=useState([])
+const onSubmitPress=()=>{
+  let myNotesData={
+    id:new Date(),
+    title:myNotes,
+    details:'demo details'
+  }
+  setmyNotesArray([...myNotesArray,myNotesData]);
+  setmodalVisible(false)
+}
+const renderItemList=({item})=>{
+return(
+  <View style={{height: vs(70),backgroundColor:'grey',
+  width: s(70),
+  marginRight: vs(20),
+  marginBottom: vs(35),}}>
+    <Text>{item.title}</Text>
+  </View>
+)
 
+}
   return (
     <View style={styles.mainView}>
       <View style={styles.profile}>
@@ -73,9 +94,13 @@ const options=[
           text={'Add'}
           onPress={()=>setmodalVisible(true)}
           image={require('../../assets/images/plusSign.png')}
-         
-        />
-       
+         />
+
+ <FlatList
+data={myNotesArray}
+renderItem={renderItemList}
+/> 
+        
         <View >
          <Modal 
          animationType="slide"
@@ -84,20 +109,31 @@ const options=[
          >
            <View style={{alignItems:'center',height:height/2, marginTop:350,backgroundColor:'skyblue'}}>
          <Text style={{fontSize:s(24),marginBottom:vs(20)}} >{"Social Media Links"}</Text>
-        
-        <FlatList data={options} 
+         <View style={{height:80,width:250, fontSize:20,backgroundColor:'white',borderRadius:10}}>
+        <TextInput style={{fontSize:20}}
+        placeholder='enter the scocial media site'
+        value={myNotes}
+        onChangeText={(value)=>setmyNotes(value)}
+        />
+        </View>
+         <TouchableOpacity onPress={onSubmitPress} style={{backgroundColor:'pink',height:50,width:100,borderRadius:10,marginTop:20}} >
+          <View  >
+          <Text style={{fontSize:21,textAlign:'center',justifyContent:'center',alignItems:'center',}} >{"select"}</Text>
+          </View>
+        </TouchableOpacity>
+        {/* <FlatList data={options} 
         renderItem={({item})=>(
           <Text 
           onPress={()=>setmodalVisible(false)}
           style={{fontSize:s(24),marginBottom:vs(20),color:'black'}} >{item.title}</Text>
   )}
-        />
+        /> */}
      
-         <TouchableOpacity onPress={()=>setmodalVisible(false)} >
+         {/* <TouchableOpacity onPress={()=>setmodalVisible(false)} >
           <View  >
           <Text style={{fontSize:20,}} >{"select"}</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 <View >
 
            </View>

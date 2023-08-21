@@ -113,6 +113,26 @@ const styles = ScaledSheet.create({
     color: themeDefault.colors.grey,
     textAlign: 'center',
   },
+  button:{
+height:s(28),
+width:vs(70),
+borderRadius:vs(5),
+backgroundColor:themeDefault.colors.white,
+borderColor:themeDefault.colors.pink,
+borderWidth:1,
+justifyContent:'center',
+alignItems:'center'
+ 
+  },
+  buttonText:{
+    fontSize:s(12),
+    letterSpacing:vs(0.04),
+    lineHeight:vs(14),
+    color:themeDefault.colors.pink,
+    fontWeight:'500'
+   
+
+  }
 });
 
 export default styles;

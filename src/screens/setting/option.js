@@ -23,12 +23,13 @@ const {height, width} = Dimensions.get('window');
 const Settings = ({navigation}) => {
   const goToBack = () => navigation.goBack();
   const goToAccountInfo=()=>navigation.navigate('AccountInfo')
+  const goToAccountPrivacy=()=>navigation.navigate('AccountPrivacy')
   // const goToName=()=>navigation.navigate('profile')
   return (
     <View style={styles.mainView}>
      
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{marginTop:s(-46)}} >
+        <View  >
         <HeaderComponent onBack={goToBack}  />
         <Heading title={'Options'} headStyle={{marginTop: s(-10)}} />
         </View>
@@ -57,7 +58,7 @@ const Settings = ({navigation}) => {
         />
         <Section text={'LINKED ACCOUNTS'} />
         <SubSection text={'Linked Accounts'}
-        onPress={()=>navigation.navigate('linkedAccount')}
+        onPress={()=>navigation.navigate('LinkedAccounts')}
         />
         <Section text={'CONTACT INFORMATION'} />
         <SubSection text={'Mobile Number'} name={'+1 802-283-2910'} 
@@ -72,14 +73,22 @@ const Settings = ({navigation}) => {
         <SubSection text={'Fax'}
          onPress={() => navigation.navigate('Profile', {id:7})}
         />
-        <SubSection text={'Address'} />
+        <SubSection text={'Address'}
+         onPress={() => navigation.navigate('Edit')}
+        />
         <Section text={'ACCOUNT INFORMATION'} />
         <SubSection text={'Signup Info'} name={'+1 802-283-2910'}
         onPress={goToAccountInfo}
         />
-        <SubSection text={'Privacy'} />
-        <SubSection text={'Notifications'} />
-        <SubSection text={'Blocked Contacts'} />
+        <SubSection text={'Privacy'}
+         onPress={()=>navigation.navigate('AccountPrivacy',{id:0})}
+        />
+        <SubSection text={'Notifications'} 
+        onPress={()=>navigation.navigate('AccountPrivacy',{id:1})}
+        />
+        <SubSection text={'Blocked Contacts'}
+         onPress={()=>navigation.navigate('AccountPrivacy',{id:2})}
+        />
         <SubSection text={'Logout'} />
         <Section
           text={'Privacy Policy and Terms Of Service'}

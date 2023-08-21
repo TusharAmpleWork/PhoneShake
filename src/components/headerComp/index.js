@@ -3,7 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {s, vs} from 'react-native-size-matters/extend';
 import {themeDefault} from '../../themes';
 
-const HeaderComponent = ({onBack, onPressSkip,backIconStyle}) => {
+const HeaderComponent = ({onBack, onPressSkip,backIconStyle,leftText,rightText}) => {
   return (
     <View style={[styles.headerStyle,backIconStyle]}>
       {!!onBack ? (
@@ -14,14 +14,14 @@ const HeaderComponent = ({onBack, onPressSkip,backIconStyle}) => {
           />
         </TouchableOpacity>
       ) : (
-        <Text />
+        <Text style={styles.text} onPress={onBack}>{leftText}</Text>
       )}
       {!!onPressSkip ? (
         <TouchableOpacity onPress={onPressSkip}>
-          <Text style={styles.skipIcon}>{'skip'}</Text>
+          <Text style={styles.skipIcon}>{rightText}</Text>
         </TouchableOpacity>
       ) : (
-        <Text />
+        <Text/>
       )}
     </View>
   );
@@ -30,7 +30,7 @@ export default HeaderComponent;
 
 const styles = StyleSheet.create({
   headerStyle: {
-    marginTop: vs(40),
+    marginTop: vs(10),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -44,4 +44,9 @@ const styles = StyleSheet.create({
     marginHorizontal: s(10),
     color: themeDefault.colors.primaryColor,
   },
+  text:{
+    fontSize: s(17),
+    marginHorizontal: s(10),
+    color: themeDefault.colors.primaryColor,
+  }
 });

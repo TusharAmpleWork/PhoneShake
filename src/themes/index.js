@@ -11,6 +11,8 @@ const themeDefault = {
     lightBlue: '#208efb80',
     secondaryColor: '#D52D2D',
     offWhite: '#F7F7F7',
+    green:'#4cd964',
+    pink:'#F33C57'
   },
   fonts: {
     SFNSDisplayRegular: 'SFNSDisplay-Regular',

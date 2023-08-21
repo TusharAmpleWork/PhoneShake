@@ -20,11 +20,12 @@ const HomeTopTab = () => {
       <View style={{marginTop:vs(35), flexDirection: 'row'}}>
         <AvlbBtn number={7}  />
       </View>
-      <Tab.Navigator>
+      <Tab.Navigator >
         <Tab.Screen
           name="shake"
           component={HomeShake}
           options={{
+            tabBarStyle:{},
             tabBarShowLabel: false,
             tabBarActiveTintColor: themeDefault.colors.primaryColor,
             tabBarInactiveTintColor: themeDefault.colors.lightGrey,
@@ -32,24 +33,21 @@ const HomeTopTab = () => {
                 <View
                   style={{
                     flex:1,
-                    
                     flexDirection: 'row',
                     justifyContent: "flex-start",
         
                     height: vs(28),
                     width:width/4,
                     alignItems: 'center',
-                    
                   }}>
                   <MaterialCommunityIcons
                     name="vibrate"
                     style={{
                       color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
                       fontSize: vs(20),
-                    
+
                     }}
                   />
-
                   <Text
                     style={{
                       color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,

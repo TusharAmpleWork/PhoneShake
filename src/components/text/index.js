@@ -17,7 +17,7 @@ const Heading = ({title, headStyle,TopheadStyle,onPress}) => {
 const SubHeading = ({title, sectionStyle, onPress}) => {
   return (
     <View>
-      <Text style={styles.textStyle} onPress={onPress}>
+      <Text style={[styles.textStyle,sectionStyle]} onPress={onPress}>
         {title}
       </Text>
     </View>
@@ -26,17 +26,17 @@ const SubHeading = ({title, sectionStyle, onPress}) => {
 const Section=({text,sectionStyle})=>{
   return(
       <View style={[styles.section,sectionStyle]}>
-  <Text style={[styles.sectionTitle]}>{text}</Text>
+  <Text style={styles.sectionTitle}>{text}</Text>
 </View>
   )
 }
-const SubSection = ({text, name, icon, iconStyle,onPress,source}) => {
+const SubSection = ({text, name, icon, iconStyle,onPress,source,sectionText}) => {
   return (
-    <View style={[styles.subSection]} >
+    <View style={[styles.subSection,sectionText]}  >
       <Image source={source} style={[styles.subSectionTitle]}  />
-      <Text  style={[styles.subSectionTitle]}>{text}</Text>
-      <View onPress={onPress}  style={[styles.subSectionView]}>
-        <Text style={[styles.subText]}>{name}</Text>
+      <Text  style={styles.subSectionTitle}>{text}</Text>
+      <View style={styles.subSectionView}>
+        <Text  style={styles.subText}>{name}</Text>
         <Icon onPress={onPress} name={'right'} style={[styles.icon, iconStyle]}
        
         />

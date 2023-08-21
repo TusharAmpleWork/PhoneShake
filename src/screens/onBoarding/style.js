@@ -383,25 +383,24 @@ const styles = ScaledSheet.create({
   },
   SubHeadingFirst: {
     fontSize: scale(12),
-
     //justifyContent:'flex-start',
     alignItems: 'flex-start',
     //height:moderateScale(14),
     //width:'90%',
     //flexDirection:"column",
     color: themeDefault.colors.grey,
-    fontWeight: '500',
+    fontWeight: '800',
     marginTop: s(10),
     marginLeft: s(12),
     //   marginRight:scale(12),
   },
   SubText: {
     fontSize: scale(14),
-    //height:moderateScale(330),
-    //width:scale(299),
+   lineHeight:s(16),
     color: themeDefault.colors.black,
     margin: s(8),
-    //marginLeft:scale(18),
+    fontFamily:themeDefault.fonts.SFNSTextRegular
+  
   },
   pview: {
     height: moderateScale(50),

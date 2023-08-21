@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@alessiocancian/react-native-actionsheet": "^3.2.0",
     "@react-native-community/checkbox": "^0.5.16",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/bottom-tabs": "^6.5.8",
@@ -29,6 +30,7 @@
     "react-native-config": "^1.5.1",
     "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "^2.12.1",
+    "react-native-mmkv": "^2.10.1",
     "react-native-pager-view": "^6.2.0",
     "react-native-paper": "^5.10.0",
     "react-native-reanimated": "^3.4.1",

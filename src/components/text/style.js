@@ -30,7 +30,7 @@ const styles = ScaledSheet.create({
 
   },
   textStyle: {
-    fontSize: s(14),
+    fontSize: vs(14),
     textAlign: 'center',
     color: themeDefault.colors.primaryColor,
     fontWeight: '500',
@@ -48,6 +48,7 @@ const styles = ScaledSheet.create({
     height: height / 13,
     width: width,
     flexDirection: 'row',
+    
   },
   subSectionTitle: {
     fontSize: scale(16),

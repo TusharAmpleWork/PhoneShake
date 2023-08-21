@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
   },
   logoView: {
     flex: 1,
-    flexDirection: 'column',
+    flexWrap:'wrap',
+    flexDirection: 'row',
   },
   wholeView: {
     backgroundColor: 'skyblue',
