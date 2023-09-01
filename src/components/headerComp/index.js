@@ -1,11 +1,19 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {s, vs} from 'react-native-size-matters/extend';
-import {themeDefault} from '../../themes';
+import {themeDefault} from '@themes';
 
-const HeaderComponent = ({onBack, onPressSkip,backIconStyle,leftText,rightText}) => {
+const HeaderComponent = ({
+  onBack,
+  onPressSkip,
+  backIconStyle,
+  leftText,
+  rightText,
+  onBackGo,
+  onBackDone,
+}) => {
   return (
-    <View style={[styles.headerStyle,backIconStyle]}>
+    <View style={[styles.headerStyle, backIconStyle]}>
       {!!onBack ? (
         <TouchableOpacity activeOpacity={0.6} onPress={onBack}>
           <Image
@@ -14,14 +22,19 @@ const HeaderComponent = ({onBack, onPressSkip,backIconStyle,leftText,rightText})
           />
         </TouchableOpacity>
       ) : (
-        <Text style={styles.text} onPress={onBack}>{leftText}</Text>
+        <Text style={styles.text} onPress={onBackGo}>
+          {leftText}
+        </Text>
       )}
       {!!onPressSkip ? (
         <TouchableOpacity onPress={onPressSkip}>
-          <Text style={styles.skipIcon}>{rightText}</Text>
+          <Text style={styles.skipIcon} onPress={onBackDone}></Text>
         </TouchableOpacity>
       ) : (
-        <Text/>
+        <Text style={styles.text} onPress={onBackDone}>
+          {' '}
+          {rightText}
+        </Text>
       )}
     </View>
   );
@@ -44,9 +57,9 @@ const styles = StyleSheet.create({
     marginHorizontal: s(10),
     color: themeDefault.colors.primaryColor,
   },
-  text:{
+  text: {
     fontSize: s(17),
     marginHorizontal: s(10),
     color: themeDefault.colors.primaryColor,
-  }
+  },
 });

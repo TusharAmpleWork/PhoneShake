@@ -1,7 +1,15 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-import AnimatedEllipsis from 'react-native-animated-ellipsis';
+import React, {useState} from 'react';
+import {Animated, Text, View} from 'react-native';
+import Loader from 'react-native-three-dots-loader';
 import styles from './style';
+
+// const animateIn = () => {
+//   Animated.timing(animatePress, {
+//     toValue: 0.5,
+//     duration: 500,
+//     useNativeDriver: true, // Add This line
+//   }).start();
+// };
 const Loading = ({navigation}) => {
   setTimeout(() => {
     navigation.navigate('HomeTab');
@@ -9,7 +17,7 @@ const Loading = ({navigation}) => {
   return (
     <View style={styles.wholepage}>
       <View style={styles.animation}>
-        <AnimatedEllipsis style={styles.animationSize} />
+        <Loader style={styles.animationSize} />
         <Text style={styles.animationTitle}>{'We are getting your'}</Text>
         <Text style={styles.animationTitle}>{'account ready...'}</Text>
       </View>

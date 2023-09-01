@@ -1,17 +1,26 @@
-import React, {useState,useRef} from 'react';
-import {StyleSheet, View} from 'react-native';
-import ActionSheet from "@alessiocancian/react-native-actionsheet";
-import {s, vs} from 'react-native-size-matters/extend';
-import Action from '../../components/actionSheet';
-import {BlockBtn} from '../../components/button';
-import HeaderComponent from '../../components/headerComp';
-import SwitchButton from '../../components/switch';
-import {Heading, Section, SubHeading, SubSection} from '../../components/text';
-import {themeDefault} from '../../themes';
+import React, {useState, useRef} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
+import ActionSheet from '@alessiocancian/react-native-actionsheet';
+import {s, vs, ScaledSheet} from 'react-native-size-matters/extend';
+import Action from '@actionSheet';
+import {BlockBtn} from '@button';
+import HeaderComponent from '@headerComp';
+import SwitchButton from '@switchButton';
+import {Heading, Section, SubHeading, SubSection} from '@text';
+import {themeDefault} from '@themes';
 
 const AccountPrivacy = ({navigation, ...props}) => {
-  let actionSheet=useRef()
-  let optionArray=['Unblock','cancel']
+  const [hide, setHide] = useState(true);
+  let actionSheet = useRef();
+  let optionArray = ['Unblock', 'cancel'];
+  const handleBlockContacts = item => {
+    //console.log(optionArray[index]);
+    if (optionArray[item] === 'Unblock') {
+      setHide(!hide);
+    } else {
+      console.log('false');
+    }
+  };
   const goBack = () => navigation.goBack();
   const [contact, setContact] = useState(false);
   const [contactAccepted, setContactAccepted] = useState(false);
@@ -20,11 +29,17 @@ const AccountPrivacy = ({navigation, ...props}) => {
   const toggleContactAccepted = () => setContactAccepted(!contactAccepted);
   const toggleContactAdded = () => setContactAdded(!contactAdded);
   const {id} = props.route.params;
+  const goToOptions = () => navigation.goBack();
   switch (id) {
     case 0:
       return (
         <View style={styles.container}>
-          <HeaderComponent leftText={'Cancel'} onPressSkip rightText={'Done'} />
+          <HeaderComponent
+            leftText={'Cancel'}
+            onBackGo={goToOptions}
+            rightText={'Done'}
+            onBackDone={goToOptions}
+          />
           <Heading title={'Account Privacy'} headStyle={{marginTop: vs(-10)}} />
           <View style={styles.view}>
             <SubHeading title={'Private Account'} sectionStyle={styles.text} />
@@ -49,7 +64,12 @@ const AccountPrivacy = ({navigation, ...props}) => {
     case 1:
       return (
         <View style={styles.container}>
-          <HeaderComponent leftText={'Cancel'} onPressSkip rightText={'Done'} />
+          <HeaderComponent
+            leftText={'Cancel'}
+            onBackGo={goToOptions}
+            rightText={'Done'}
+            onBackDone={goToOptions}
+          />
           <Heading title={'Notifications'} headStyle={{marginTop: vs(-10)}} />
           <Section
             text={'WHEN ACCOUNT IS PRIVATE'}
@@ -111,52 +131,67 @@ const AccountPrivacy = ({navigation, ...props}) => {
     case 2:
       return (
         <View style={styles.container}>
-          <HeaderComponent leftText={'Cancel'} onPressSkip rightText={'Done'} />
+          <HeaderComponent
+            leftText={'Cancel'}
+            onBackGo={goToOptions}
+            rightText={'Done'}
+            onBackDone={goToOptions}
+          />
           <Heading
             title={'Blocked Contacts'}
             headStyle={{marginTop: vs(-10)}}
           />
-          <View style={styles.contact}>
-            <View style={styles.image}></View>
-            <View style={styles.blockedName}>
-              <SubHeading title={'Nathen Peters'} sectionStyle={styles.name} />
-              <Section text={'@npeters'} sectionStyle={styles.signupname} />
+          {hide ? (
+            <View style={styles.contact}>
+              <View style={styles.image}></View>
+              <View style={styles.blockedName}>
+                <SubHeading
+                  title={'Nathen Peters'}
+                  sectionStyle={styles.name}
+                />
+                <Section text={'@npeters'} sectionStyle={styles.signupname} />
+              </View>
+              <View style={styles.button}>
+                <BlockBtn onPress={() => actionSheet.current.show()} />
+                <ActionSheet
+                  ref={actionSheet}
+                  title={'Unblock'}
+                  message={'Are you sure you want to unblock this contact?'}
+                  options={optionArray}
+                  destructiveButtonIndex={0}
+                  onPress={item => {
+                    handleBlockContacts(item);
+                  }}
+                  //onPress={handlePress}
+                />
+              </View>
             </View>
-            <View style={styles.button}>
-              <BlockBtn onPress={()=>actionSheet.current.show()} />
-              <ActionSheet
-ref={actionSheet}
-title={'Unblock'}
-message={'Are you sure you want to unblock this contact?'}
-options={optionArray}
-destructiveButtonIndex={0}
-onPress={()=>optionArray}
-//onPress={handlePress}
-/>
+          ) : (
+            <View>
+              <Heading
+                title={'You have not blocked'}
+                headStyle={{marginTop: vs(110)}}></Heading>
+
+              <Heading
+                title={'any of your contacts'}
+                headStyle={{marginTop: vs(0)}}></Heading>
+
+              <Section
+                text={'When you do, they will show up here'}
+                sectionStyle={styles.contacts}
+              />
             </View>
-          </View>
-          
-          <Heading
-            title={'You have not blocked'}
-            headStyle={{marginTop: vs(110)}}
-          />
-          <Heading
-            title={'any of your contacts'}
-            headStyle={{marginTop: vs(0)}}
-          />
-          <Section
-            text={'When you do, they will show up here'}
-            sectionStyle={styles.contacts}
-          />
+          )}
         </View>
       );
+
       break;
     default:
       return <Heading title={'not present'} />;
   }
 };
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
     flex: 1,
     backgroundColor: themeDefault.colors.white,
@@ -171,6 +206,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: vs(15),
+    marginHorizontal: vs(14),
   },
   paragraph: {
     marginTop: vs(20),
@@ -186,7 +222,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: vs(10),
-    backgroundColor: 'skyblue',
   },
   image: {
     height: vs(45),
@@ -204,8 +239,6 @@ const styles = StyleSheet.create({
   blockedName: {
     flexDirection: 'column',
     alignItems: 'center',
-    //backgroundColor:'skyblue'
-    //marginTop:vs(-10)
   },
   signupname: {
     marginTop: vs(-11),

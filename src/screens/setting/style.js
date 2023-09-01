@@ -1,6 +1,8 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {s, vs} from 'react-native-size-matters/extend';
-import {themeDefault} from '../../themes';
+//import {themeDefault} from '../../themes';
+
+import {themeDefault} from '@themes';
 const {height, width} = Dimensions.get('window');
 const styles = StyleSheet.create({
   titleview: {
@@ -94,11 +96,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: s(55),
   },
-  settingsIconStyle: {height: s(21), width: s(21), marginTop: vs(37)},
-  settingIcon: {marginHorizontal: s(21), alignItems: 'flex-end'},
+  settingsIconStyle: {
+    height: s(21),
+    width: s(21),
+    marginTop: vs(37),
+  },
+  settingIcon: {
+    marginHorizontal: s(21),
+    alignItems: 'flex-end',
+  },
   logo: {
     backgroundColor: 'orange',
-    borderRadius: 25 / 2,
+    borderRadius: s(25 / 2),
     width: s(25),
     height: s(25),
     marginTop: s(-30),
@@ -163,8 +172,10 @@ const styles = StyleSheet.create({
   },
   logoView: {
     flex: 1,
-    flexWrap:'wrap',
+    flexWrap: 'wrap',
     flexDirection: 'row',
+    marginTop: vs(15),
+    marginHorizontal: vs(10),
   },
   wholeView: {
     backgroundColor: 'skyblue',

@@ -1,12 +1,11 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Text} from 'react-native';
 import {s, vs} from 'react-native-size-matters/extend';
-import {ContinueBtn, PrivacyBtn} from '../../components/button';
+import {Button, PrivacyBtn} from '@button';
 import Check from '../../components/checkBox';
-import HeaderComponent from '../../components/headerComp';
-import SubHead from '../../components/subText';
-import {Heading} from '../../components/text';
+import HeaderComponent from '@headerComp';
+import SubHead from '@subText';
+import {Heading} from '@text';
 import styles from './style';
 
 const Privacyp = ({navigation}) => {
@@ -95,7 +94,7 @@ const Privacyp = ({navigation}) => {
         </Text>
       </View>
 
-      <ContinueBtn
+      <Button
         disabled={toggleCheckBox ? false : true}
         textStyle={toggleCheckBox ? styles.initialstate : styles.finalstate}
         title="Continue"

@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, TextInput, View,Text } from 'react-native';
-import { s,vs } from "react-native-size-matters/extend";
-import HeaderComponent from "../../components/headerComp";
-import { Heading } from "../../components/text";
-import { themeDefault } from "../../themes";
+import { s,ScaledSheet,vs } from "react-native-size-matters/extend";
+import HeaderComponent from "@headerComp";
+import { Heading } from "@text";
+import { themeDefault } from "@themes";
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 
 
@@ -24,7 +24,7 @@ const Edit=()=>{
         </View>
     )
 }
-const styles=StyleSheet.create({
+const styles=ScaledSheet.create({
     container:{
         flex:1,
         backgroundColor:themeDefault.colors.white

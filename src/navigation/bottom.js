@@ -3,7 +3,7 @@ import {View, TextInput, Dimensions} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeTopTab from './top';
-import {themeDefault} from '../themes';
+import {themeDefault} from '@themes';
 import { s, vs } from 'react-native-size-matters/extend';
 import ContactMe from '../screens/setting/aboutMe';
 

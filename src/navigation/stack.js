@@ -25,16 +25,18 @@ const Stack = createStackNavigator();
 const HomeStack = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='HomeTab' >
-        <Stack.Screen name="landing" component={HomePage} />
-        <Stack.Screen name="MobileVerf" component={MobileVerf}  />
-        <Stack.Screen name="EmailVerf" component={EmailVerf}  />
-        <Stack.Screen name="ConfirmCode" component={ConfirmCode}  />
-        <Stack.Screen name="NameCheck" component={NameCheck}  />
-        <Stack.Screen name="OrgCheck" component={OrgCheck}  />
+      <Stack.Navigator
+        screenOptions={{headerShown: false}}
+        initialRouteName="HomeTab">
+        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="MobileVerf" component={MobileVerf} />
+        <Stack.Screen name="EmailVerf" component={EmailVerf} />
+        <Stack.Screen name="ConfirmCode" component={ConfirmCode} />
+        <Stack.Screen name="NameCheck" component={NameCheck} />
+        <Stack.Screen name="OrgCheck" component={OrgCheck} />
         <Stack.Screen name="YourPostn" component={YourPosition} />
         <Stack.Screen name="ContactName" component={ContactName} />
-        <Stack.Screen name="Privacyp" component={Privacyp}/>
+        <Stack.Screen name="Privacyp" component={Privacyp} />
         <Stack.Screen name="Loading" component={Loading} />
         <Stack.Screen name="HomeTab" component={HomeTab} />
         <Stack.Screen name="contactMe" component={ContactMe} />

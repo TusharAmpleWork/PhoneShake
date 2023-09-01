@@ -396,11 +396,10 @@ const styles = ScaledSheet.create({
   },
   SubText: {
     fontSize: scale(14),
-   lineHeight:s(16),
+    lineHeight: s(16),
     color: themeDefault.colors.black,
     margin: s(8),
-    fontFamily:themeDefault.fonts.SFNSTextRegular
-  
+    fontFamily: themeDefault.fonts.SFNSTextRegular,
   },
   pview: {
     height: moderateScale(50),

@@ -1,64 +1,92 @@
-import React from 'react';
-import {View, Image, Text, Button, Alert, Dimensions, StyleSheet} from 'react-native';
-import {scale, verticalScale} from 'react-native-size-matters';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Image,
+  Text,
+  Button,
+  Alert,
+  Dimensions,
+  StyleSheet,
+  TextInput,
+} from 'react-native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useSelector} from 'react-redux';
 import Feather from 'react-native-vector-icons/Feather';
 import HomeShake from '../screens/homepage/homeShake';
 import Qrcode from '../screens/homepage/qrCode';
 import Sharescrn from '../screens/homepage/shareContact';
-import {AvlbBtn} from '../components/button';
-import { themeDefault } from '../themes';
-import { s, vs } from 'react-native-size-matters/extend';
+import {AvlbBtn} from '@button';
+import {themeDefault} from '@themes';
+import {setStorage, getStorage} from '@storage';
+import {s, vs} from 'react-native-size-matters/extend';
 import styles from '../screens/onBoarding/style';
-const {height,width}=Dimensions.get('window')
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+const {height, width} = Dimensions.get('window');
 const HomeTopTab = () => {
   const Tab = createMaterialTopTabNavigator();
+  const countInc = useSelector(state => state.reducer1);
+  const [inc, setInc] = useState(0);
+  useEffect(() => {
+    setInc(countInc.length);
+  }, [countInc]);
+  const getItem = getStorage('cnt');
   return (
     <View style={styles.wholepage}>
-      <View style={{marginTop:vs(35), flexDirection: 'row'}}>
-        <AvlbBtn number={7}  />
+      <View style={{flexDirection: 'row'}}>
+        <View style={style.input}>
+          <EvilIcons name="search" style={style.icon} />
+          <TextInput style={style.inputs} placeholder="Search Address" />
+        </View>
+        <AvlbBtn number={getItem} />
       </View>
-      <Tab.Navigator >
+      <Tab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: {fontSize: 12},
+          // tabBarStyle: { backgroundColor: 'powderblue' },
+          tabBarIconStyle: {
+            marginRight: vs(35),
+          },
+        }}>
         <Tab.Screen
           name="shake"
           component={HomeShake}
           options={{
-            tabBarStyle:{},
             tabBarShowLabel: false,
             tabBarActiveTintColor: themeDefault.colors.primaryColor,
             tabBarInactiveTintColor: themeDefault.colors.lightGrey,
-            tabBarIcon: ({focused}) => (
-                <View
-                  style={{
-                    flex:1,
-                    flexDirection: 'row',
-                    justifyContent: "flex-start",
-        
-                    height: vs(28),
-                    width:width/4,
-                    alignItems: 'center',
-                  }}>
-                  <MaterialCommunityIcons
-                    name="vibrate"
-                    style={{
-                      color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: vs(20),
 
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: s(14),
-                      textAlign: 'center',
-                    marginHorizontal:vs(5)
-                    }}>
-                    {'Shake'}
-                  </Text>
-                </View>
-              
+            tabBarIcon: ({focused}) => (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                  //height: vs(28),
+                  width: width,
+                  alignItems: 'center',
+                }}>
+                <MaterialCommunityIcons
+                  name="vibrate"
+                  style={{
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(20),
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(14),
+                    textAlign: 'center',
+                    marginHorizontal: vs(5),
+                  }}>
+                  {'Shake'}
+                </Text>
+              </View>
             ),
           }}
         />
@@ -71,32 +99,34 @@ const HomeTopTab = () => {
             tabBarActiveTintColor: themeDefault.colors.primaryColor,
             tabBarInactiveTintColor: themeDefault.colors.lightGrey,
             tabBarIcon: ({focused}) => (
-                <View
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  //height: vs(28),
+                  width: width / 5,
+                  alignItems: 'center',
+                }}>
+                <MaterialIcons
+                  name="qr-code-2"
                   style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    height: vs(28),
-                    width: width/5,
-                    alignItems: 'center',
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(20),
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(14),
+                    textAlign: 'center',
                   }}>
-                  <MaterialIcons
-                    name="qr-code-2"
-                    style={{
-                      color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: s(20),
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: s(14),
-                      textAlign: 'center',
-                     
-                    }}>
-                    {'QR Code'}
-                  </Text>
-                </View>
-          
+                  {'QR Code'}
+                </Text>
+              </View>
             ),
           }}
         />
@@ -109,32 +139,34 @@ const HomeTopTab = () => {
             tabBarActiveTintColor: themeDefault.colors.primaryColor,
             tabBarInactiveTintColor: themeDefault.colors.lightGrey,
             tabBarIcon: ({focused}) => (
-            
-                <View
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  //height: vs(28),
+                  width: width / 5,
+                  alignItems: 'center',
+                }}>
+                <Feather
+                  name="send"
                   style={{
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                    height: vs(28),
-                    width: width/5,
-                    alignItems: 'center',
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(20),
+                  }}
+                />
+                <Text
+                  style={{
+                    color: focused
+                      ? themeDefault.colors.primaryColor
+                      : themeDefault.colors.lightGrey,
+                    fontSize: s(14),
+                    textAlign: 'center',
                   }}>
-                  <Feather
-                    name="send"
-                    style={{
-                      color: focused ?themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: s(20),
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: focused ? themeDefault.colors.primaryColor : themeDefault.colors.lightGrey,
-                      fontSize: s(14),
-                      textAlign: 'center',
-                      
-                    }}>
-                    {'Share'}
-                  </Text>
-                </View>
+                  {'Share'}
+                </Text>
+              </View>
             ),
           }}
         />
@@ -142,7 +174,21 @@ const HomeTopTab = () => {
     </View>
   );
 };
-
-
+const style = StyleSheet.create({
+  input: {
+    flexDirection: 'row',
+    height: vs(29),
+    width: '80%',
+    backgroundColor: themeDefault.colors.offWhite,
+    marginHorizontal: vs(12),
+  },
+  icon: {
+    marginTop: vs(4),
+    fontSize: s(20),
+  },
+  inputs: {
+    marginHorizontal: 10,
+  },
+});
 
 export default HomeTopTab;
